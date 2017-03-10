@@ -1,0 +1,24 @@
+<html ng-app="app">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <script src="js/angular.js"></script>
+  <script src="js/jquery-1.12.4.min.js"></script>
+ 
+  <script >
+  var app=angular.module("app",[]);
+  app.controller('ctrl', ['$scope','$compile',function($scope,$compile){
+    $scope.userName='RAY';
+    $scope.test = function test(){
+      console.log('你好:' +$scope.userName);
+    }
+    //通过$compile动态编译html
+    var html="<button ng-click='test()'>{{userName}}</button>";
+    var template = angular.element(html);
+    var mobileDialogElement = $compile(template)($scope);
+    angular.element(document.body).append(mobileDialogElement);
+  }]);
+  </script>
+</head>
+<body ng-controller="ctrl">
+</body>
+</html>
